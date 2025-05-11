@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Expenses";
+}
+@model List<Expense>
+<div class="text-center">
+    <h1>your Expenses are listed bellow :</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Value</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach(var expense in Model)
+                {
+                    <tr>
+                         <td>@expense.Id
+                         </td>
+                          <td>@expense.Value
+                         </td>
+                        <td>
+                            @expense.Description
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
