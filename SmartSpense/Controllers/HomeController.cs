@@ -24,15 +24,35 @@ namespace SmartSpense.Controllers
             var allExpenses = _context.Expenses.ToList();
             return View(allExpenses);
         }
-        public IActionResult CreateEditExpense()
+        public IActionResult CreateEditExpense(int? Id)
         {
+            if (Id != null)
+            {
+                var ExpenseInDb = _context.Expenses.SingleOrDefault(expense => expense.Id == Id);
+                return View(ExpenseInDb);
+            }
             return View();
+        }
+        public IActionResult DeleteExpense(int Id)
+        {
+            var ExpenseInDb = _context.Expenses.SingleOrDefault(expense => expense.Id == Id);
+            _context.Expenses.Remove(ExpenseInDb);
+            _context.SaveChanges();
+            return RedirectToAction("Expenses");
         }
         public IActionResult CreateEditExpenseForm(Expense model)
 
         {
-            _context.Expenses.Add(model);
-            _context.SaveChanges();
+            if (model.Id == 0)
+            {//create sth
+ _context.Expenses.Add(model);
+            }
+            else
+            {
+                _context.Expenses.Update(model);
+            }
+
+                _context.SaveChanges();
             return RedirectToAction("Expenses");
         }
 

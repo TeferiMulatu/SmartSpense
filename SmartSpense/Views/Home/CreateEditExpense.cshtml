@@ -5,8 +5,8 @@
 <h1>Create or Edit Expense</h1>
 
 <form asp-action="CreateEditExpenseForm" asp-controller="Home">
-	<lable class="mt-4">Id</lable>
-	<input type="number" class="form-control" asp-for="Id" placeholder="0" />
+	
+	<input hidden type="number" class="form-control" asp-for="Id" placeholder="0" />
 	<lable class="mt-4">Value $</lable>
 	<input type="number" class="form-control" asp-for="Value" placeholder="0" step="0.1" />
 	<lable class="mt-4">Description</lable>
