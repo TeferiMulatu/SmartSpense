@@ -22,6 +22,8 @@ namespace SmartSpense.Controllers
         public IActionResult Expenses()
         {
             var allExpenses = _context.Expenses.ToList();
+            var TotalExpenses=allExpenses.Sum(expense => expense.Value);
+            ViewBag.expenses = TotalExpenses;
             return View(allExpenses);
         }
         public IActionResult CreateEditExpense(int? Id)
